@@ -30,7 +30,7 @@ public class SandLab
     names[METAL] = "Metal";
     
     //1. Add code to initialize the data member grid with same dimensions
-    
+    grid = new int[numRows][numCols];
     
     display = new SandDisplay("Falling Sand", numRows, numCols, names);
   }
@@ -38,6 +38,7 @@ public class SandLab
   //called when the user clicks on a location using the given tool
   private void locationClicked(int row, int col, int tool)
   {
+	  
     //2. Assign the values associated with the parameters to the grid
    
   }
@@ -59,6 +60,7 @@ public class SandLab
     //The scalar refers to how big the value could be
     //int someRandom = (int) (Math.random() * scalar)
     //remember that you need to watch for the edges of the array
+	  
     
     
   }
