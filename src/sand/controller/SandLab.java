@@ -48,7 +48,26 @@ public class SandLab
   {
       //Step 3
    //Hint - use a nested for loop
-    
+	  
+	  for(int r = 0; r < grid.length; r++)
+	  {
+		  for(int c = 0; c < grid[0].length; c++)
+		  {
+			  Color drawingColor = Color.pink;
+			  
+			  else if(grid[r][c] == METAL)
+			  {
+				  drawingColor = Color.GRAY;
+				  
+			  }
+			  else if(grid[r][c] == EMPTY)
+			  {
+				  drawingColor = Color.BLACK;
+			  }
+			  
+			  display.setColor(r,c,drawingColor);
+		  }
+	  }
   }
 
   //Step 5,7
