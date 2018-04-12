@@ -40,7 +40,7 @@ public class SandLab
   {
 	  
     //2. Assign the values associated with the parameters to the grid
-   
+	grid[row][col] = tool;
   }
 
   //copies each element of grid into the display
