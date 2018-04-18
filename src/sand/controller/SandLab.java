@@ -93,29 +93,34 @@ public class SandLab
   //called repeatedly.
   //causes one random particle in grid to maybe do something.
   public void step()
-  {//work on this
+  {
     //Remember, you need to access both row and column to specify a spot in the array
     //The scalar refers to how big the value could be
-	int scalar = 50;
-    int someRandom = (int) (Math.random() * scalar);
-    //remember that you need to watch for the edges of the array
-    for(int row= 0; row < grid.length; row++)
-    	{
-    		for(int col = 0; col < grid[0].length; col++)
-    		{
-    			if(someRandom < 0 || someRandom  > grid.length)
-    			{
-    				someRandom = 50;
-    			}
-	    		if(grid[row][col] == SAND && grid[row++][col] == EMPTY)
-	    		{
-	    			grid[row][col] = someRandom;
-	    			grid[row++][col] = SAND; 
-	    			
-	    		}
-    		}
-    	}
+	//int scalar = 100;
+    int someRandomRow = (int) (Math.random() * (grid.length -1));
+    int someRandomCol = (int) (Math.random() * (grid[0].length -1));
     
+    int value;
+    int spot = grid[someRandomRow][someRandomCol];
+    int below = grid[someRandomRow + 1][someRandomCol];
+    
+    //remember that you need to watch for the edges of the array
+//    if(someRandomRow < 0 || someRandomRow  > grid.length)
+//    {
+//	    	someRandomRow = 2;
+//    }
+//    if(someRandomCol < 0 || someRandomCol  > grid.length)
+//    {
+//	    	someRandomCol = 2;
+//    }
+    
+    if(spot == SAND && below == EMPTY)
+    {
+    		value = spot;
+    		
+    		grid[someRandomRow + 1][someRandomCol] = value;
+    		grid[someRandomRow][someRandomCol] = EMPTY;
+    }
   }
   
   //do not modify this method!
