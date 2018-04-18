@@ -8,7 +8,9 @@ public class SandLab
   //add constants for particle types here
   public static final int EMPTY = 0;
   public static final int METAL = 1;
-  private static final int SAND = 2;
+  public static final int SAND = 2;
+  public static final int WATER = 3;
+  public static final int RANDOM = 4;
   
   
   //do not add any more fields below
@@ -26,11 +28,13 @@ public class SandLab
     String[] names;
     // Change this value to add more buttons
     //Step 4,6
-    names = new String[3];
+    names = new String[5];
     // Each value needs a name for the button
     names[EMPTY] = "Empty";
     names[METAL] = "Metal";
     names[SAND] = "Sand";
+    names[WATER] = "Water";
+    names[RANDOM] = "random";
     
     //1. Add code to initialize the data member grid with same dimensions
     grid = new int[numRows][numCols];
