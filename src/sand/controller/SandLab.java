@@ -75,6 +75,14 @@ public class SandLab
 			  {
 				  drawingColor = Color.BLACK;
 			  }
+			  else if(grid[r][c] == RANDOM)
+			  {
+				  drawingColor = Color.GREEN;
+			  }
+			  else if(grid[r][c] == WATER)
+			  {
+				  drawingColor = Color.BLUE;
+			  }
 			  
 			  display.setColor(r,c,drawingColor);
 		  }
