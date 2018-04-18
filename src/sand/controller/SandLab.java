@@ -121,6 +121,28 @@ public class SandLab
     		grid[someRandomRow + 1][someRandomCol] = value;
     		grid[someRandomRow][someRandomCol] = EMPTY;
     }
+    if(spot == WATER)
+    {
+    		value = spot;
+    		int left = grid[someRandomRow][someRandomCol -1];
+    		int right = grid[someRandomRow][someRandomCol +1];
+    		
+    		if(below == EMPTY)
+    		{
+    			grid[someRandomRow + 1][someRandomCol] = value;
+        		grid[someRandomRow][someRandomCol] = EMPTY;
+    		}
+    		else if(left == EMPTY)
+    		{
+    			grid[someRandomRow][someRandomCol - 1] = value;
+        		grid[someRandomRow][someRandomCol] = EMPTY;
+    		}
+    		else if(right == EMPTY)
+    		{
+    			grid[someRandomRow][someRandomCol + 1] = value;
+        		grid[someRandomRow][someRandomCol] = EMPTY;
+    		}
+    }
   }
   
   //do not modify this method!
