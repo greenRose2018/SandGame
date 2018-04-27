@@ -137,7 +137,7 @@ public class SandLab
     			grid[someRandomRow][someRandomCol - 1] = value;
         		grid[someRandomRow][someRandomCol] = EMPTY;
     		}
-    		else if(right == EMPTY)
+    		else if(right == EMPTY && someRandomCol < grid[0].length)
     		{
     			grid[someRandomRow][someRandomCol + 1] = value;
         		grid[someRandomRow][someRandomCol] = EMPTY;
