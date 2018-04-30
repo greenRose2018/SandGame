@@ -101,18 +101,12 @@ public class SandLab
     int someRandomCol = (int) (Math.random() * (grid[0].length -1));
     
     int value;
+    int left;
+    int right;
     int spot = grid[someRandomRow][someRandomCol];
     int below = grid[someRandomRow + 1][someRandomCol];
     
     //remember that you need to watch for the edges of the array
-//    if(someRandomRow < 0 || someRandomRow  > grid.length)
-//    {
-//	    	someRandomRow = 2;
-//    }
-//    if(someRandomCol < 0 || someRandomCol  > grid.length)
-//    {
-//	    	someRandomCol = 2;
-//    }
     
     if(spot == SAND && below == EMPTY)
     {
@@ -124,8 +118,23 @@ public class SandLab
     if(spot == WATER)
     {
     		value = spot;
-    		int left = grid[someRandomRow][someRandomCol -1];
-    		int right = grid[someRandomRow][someRandomCol +1];
+    		
+    		if(someRandomCol - 1 < 0)
+    		{
+    			left = grid[someRandomRow][someRandomCol];
+    		}
+    		else
+    		{
+    			left = grid[someRandomRow][someRandomCol-1];
+    		}
+    		if(someRandomCol + 1  > grid[0].length)
+    		{
+    			right = grid[someRandomRow][someRandomCol];
+    		}
+    		else
+    		{
+    			right = grid[someRandomRow][someRandomCol +1];
+    		}
     		
     		if(below == EMPTY)
     		{
@@ -137,7 +146,7 @@ public class SandLab
     			grid[someRandomRow][someRandomCol - 1] = value;
         		grid[someRandomRow][someRandomCol] = EMPTY;
     		}
-    		else if(right == EMPTY && someRandomCol < grid[0].length)
+    		else if(right == EMPTY)
     		{
     			grid[someRandomRow][someRandomCol + 1] = value;
         		grid[someRandomRow][someRandomCol] = EMPTY;
