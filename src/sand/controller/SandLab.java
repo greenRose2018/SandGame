@@ -108,12 +108,20 @@ public class SandLab
     
     //remember that you need to watch for the edges of the array
     
-    if(spot == SAND && below == EMPTY)
+    if(spot == SAND )
     {
     		value = spot;
     		
-    		grid[someRandomRow + 1][someRandomCol] = value;
-    		grid[someRandomRow][someRandomCol] = EMPTY;
+    		if(below == EMPTY)
+    		{
+	    		grid[someRandomRow + 1][someRandomCol] = value;
+	    		grid[someRandomRow][someRandomCol] = EMPTY;
+    		}
+    		else if(below == WATER)
+    		{
+    			grid[someRandomRow + 1][someRandomCol] = value;
+	    		grid[someRandomRow][someRandomCol] = WATER;
+    		}
     }
     if(spot == WATER)
     {
