@@ -182,6 +182,45 @@ public class SandLab
     }
     if(spot == GRASS)
     {
+    		value = spot;
+    		above = grid[someRandomRow-1][someRandomCol];
+    		if(someRandomCol - 1 < 0)
+    		{
+    			left = grid[someRandomRow][someRandomCol];
+    		}
+    		else
+    		{
+    			left = grid[someRandomRow][someRandomCol-1];
+    		}
+    		if(someRandomCol + 1  > grid[0].length)
+    		{
+    			right = grid[someRandomRow][someRandomCol];
+    		}
+    		else
+    		{
+    			right = grid[someRandomRow][someRandomCol +1];
+    		}
+    		if(above == WATER)
+    		{
+    			grid[someRandomRow-1][someRandomCol] = value;
+    			grid[someRandomRow][someRandomCol] = GRASS;
+    		}
+    		else if(below == WATER)
+    		{
+    			grid[someRandomRow+1][someRandomCol] = value;
+    			grid[someRandomRow][someRandomCol] = GRASS;
+    		}
+    		else if(left == WATER)
+    		{
+    			grid[someRandomRow][someRandomCol-1] = value;
+    			grid[someRandomRow][someRandomCol] = GRASS;
+    		}
+    		else if(right == WATER)
+    		{
+    			grid[someRandomRow][someRandomCol+1] = value;
+    			grid[someRandomRow][someRandomCol] = GRASS;
+    		}
+    		
     }
     if(spot == DIRT)
     {
