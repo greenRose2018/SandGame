@@ -10,7 +10,10 @@ public class SandLab
   public static final int METAL = 1;
   public static final int SAND = 2;
   public static final int WATER = 3;
-  public static final int RANDOM = 4;
+  public static final int GRASS = 4;
+  public static final int FIRE = 5;
+  public static final int DIRT = 6;
+  public static final int OXYGEN = 7;
   
   
   //do not add any more fields below
@@ -28,13 +31,16 @@ public class SandLab
     String[] names;
     // Change this value to add more buttons
     //Step 4,6
-    names = new String[5];
+    names = new String[8];
     // Each value needs a name for the button
     names[EMPTY] = "Empty";
     names[METAL] = "Metal";
     names[SAND] = "Sand";
     names[WATER] = "Water";
-    names[RANDOM] = "random";
+    names[GRASS] = "Grass seed";
+    names[FIRE] = "Fire";
+    names[DIRT] = "Dirt";
+    names[OXYGEN] = "Oxygen";
     
     //1. Add code to initialize the data member grid with same dimensions
     grid = new int[numRows][numCols];
@@ -61,6 +67,7 @@ public class SandLab
 		  for(int c = 0; c < grid[0].length; c++)
 		  {
 			  Color drawingColor = Color.pink;
+			  Color brown = new Color(102,51,0);
 			  
 			  if(grid[r][c] == SAND)
 			  {
@@ -75,13 +82,25 @@ public class SandLab
 			  {
 				  drawingColor = Color.BLACK;
 			  }
-			  else if(grid[r][c] == RANDOM)
+			  else if(grid[r][c] == GRASS)
 			  {
 				  drawingColor = Color.GREEN;
 			  }
 			  else if(grid[r][c] == WATER)
 			  {
 				  drawingColor = Color.BLUE;
+			  }
+			  else if(grid[r][c] == FIRE)
+			  {
+				  drawingColor = Color.RED;
+			  }
+			  else if(grid[r][c] == DIRT)
+			  {
+				  drawingColor = brown;
+			  }
+			  else if(grid[r][c] == OXYGEN)
+			  {
+				  drawingColor = Color.lightGray;
 			  }
 			  
 			  display.setColor(r,c,drawingColor);
@@ -103,6 +122,7 @@ public class SandLab
     int value;
     int left;
     int right;
+    int above;
     int spot = grid[someRandomRow][someRandomCol];
     int below = grid[someRandomRow + 1][someRandomCol];
     
@@ -159,6 +179,21 @@ public class SandLab
     			grid[someRandomRow][someRandomCol + 1] = value;
         		grid[someRandomRow][someRandomCol] = EMPTY;
     		}
+    }
+    if(spot == GRASS)
+    {
+    }
+    if(spot == DIRT)
+    {
+    		
+    }
+    if(spot == FIRE)
+    {
+    		
+    }
+    if(spot == OXYGEN)
+    {
+    		
     }
   }
   
