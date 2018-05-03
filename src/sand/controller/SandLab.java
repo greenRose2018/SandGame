@@ -76,7 +76,6 @@ public class SandLab
 			  else if(grid[r][c] == METAL)
 			  {
 				  drawingColor = Color.GRAY;
-				  
 			  }
 			  else if(grid[r][c] == EMPTY)
 			  {
@@ -141,6 +140,11 @@ public class SandLab
     		{
     			grid[someRandomRow + 1][someRandomCol] = value;
 	    		grid[someRandomRow][someRandomCol] = WATER;
+    		}
+    		else if(below == DIRT)
+    		{
+    			grid[someRandomRow + 1][someRandomCol] = value;
+	    		grid[someRandomRow][someRandomCol] = DIRT;
     		}
     }
     if(spot == WATER)
