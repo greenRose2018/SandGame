@@ -92,6 +92,7 @@ public class SandLab
 			  else if(grid[r][c] == FIRE)
 			  {
 				  drawingColor = Color.RED;
+				 
 			  }
 			  else if(grid[r][c] == DIRT)
 			  {
@@ -126,7 +127,32 @@ public class SandLab
     int below = grid[someRandomRow + 1][someRandomCol];
     
     //remember that you need to watch for the edges of the array
+    if(someRandomCol - 1 < 0)
+	{
+		left = grid[someRandomRow][someRandomCol];
+	}
+	else
+	{
+		left = grid[someRandomRow][someRandomCol-1];
+	}
+	if(someRandomCol + 1  > grid[0].length)
+	{
+		right = grid[someRandomRow][someRandomCol];
+	}
+	else
+	{
+		right = grid[someRandomRow][someRandomCol +1];
+	}
     
+	if(someRandomRow -1 < 0)
+	{
+		above = grid[someRandomRow][someRandomCol];
+	}
+	else 
+	{
+		above = grid[someRandomRow -1][someRandomCol];
+	}
+	
     if(spot == SAND )
     {
     		value = spot;
@@ -146,27 +172,15 @@ public class SandLab
     			grid[someRandomRow + 1][someRandomCol] = value;
 	    		grid[someRandomRow][someRandomCol] = DIRT;
     		}
+    		else if(below == GRASS)
+    		{
+    			grid[someRandomRow + 1][someRandomCol] = value;
+	    		grid[someRandomRow][someRandomCol] = EMPTY;
+    		}
     }
     if(spot == WATER)
     {
     		value = spot;
-    		
-    		if(someRandomCol - 1 < 0)
-    		{
-    			left = grid[someRandomRow][someRandomCol];
-    		}
-    		else
-    		{
-    			left = grid[someRandomRow][someRandomCol-1];
-    		}
-    		if(someRandomCol + 1  > grid[0].length)
-    		{
-    			right = grid[someRandomRow][someRandomCol];
-    		}
-    		else
-    		{
-    			right = grid[someRandomRow][someRandomCol +1];
-    		}
     		
     		if(below == EMPTY)
     		{
@@ -187,56 +201,49 @@ public class SandLab
     if(spot == GRASS)
     {
     		value = spot;
-    		above = grid[someRandomRow-1][someRandomCol];
-    		if(someRandomCol - 1 < 0)
+    		
+    		if(below == EMPTY)
     		{
-    			left = grid[someRandomRow][someRandomCol];
+	    		grid[someRandomRow + 1][someRandomCol] = value;
+	    		grid[someRandomRow][someRandomCol] = EMPTY;
     		}
-    		else
-    		{
-    			left = grid[someRandomRow][someRandomCol-1];
-    		}
-    		if(someRandomCol + 1  > grid[0].length)
-    		{
-    			right = grid[someRandomRow][someRandomCol];
-    		}
-    		else
-    		{
-    			right = grid[someRandomRow][someRandomCol +1];
-    		}
-    		if(above == WATER)
+    		else if(above == WATER && below == DIRT)
     		{
     			grid[someRandomRow-1][someRandomCol] = value;
     			grid[someRandomRow][someRandomCol] = GRASS;
     		}
     		else if(below == WATER)
     		{
-    			grid[someRandomRow+1][someRandomCol] = value;
-    			grid[someRandomRow][someRandomCol] = GRASS;
+    			grid[someRandomRow + 1][someRandomCol] = value;
+	    		grid[someRandomRow][someRandomCol] = WATER;
     		}
-    		else if(left == WATER)
-    		{
-    			grid[someRandomRow][someRandomCol-1] = value;
-    			grid[someRandomRow][someRandomCol] = GRASS;
-    		}
-    		else if(right == WATER)
-    		{
-    			grid[someRandomRow][someRandomCol+1] = value;
-    			grid[someRandomRow][someRandomCol] = GRASS;
-    		}
-    		
     }
     if(spot == DIRT)
     {
-    		
+    		value = spot;
+    		if(below == EMPTY)
+		{
+	    		grid[someRandomRow + 1][someRandomCol] = value;
+	    		grid[someRandomRow][someRandomCol] = EMPTY;
+		}
     }
     if(spot == FIRE)
     {
-    		
+    		value = spot;
+    		if(below == EMPTY)
+		{
+	    		grid[someRandomRow + 1][someRandomCol] = value;
+	    		grid[someRandomRow][someRandomCol] = EMPTY;
+		}
     }
     if(spot == OXYGEN)
     {
-    		
+    		value = spot;
+    		if(above == EMPTY)
+		{
+	    		grid[someRandomRow - 1][someRandomCol] = value;
+	    		grid[someRandomRow][someRandomCol] = EMPTY;
+		}
     }
   }
   
