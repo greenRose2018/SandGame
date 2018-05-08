@@ -197,6 +197,11 @@ public class SandLab
     			grid[someRandomRow][someRandomCol + 1] = value;
         		grid[someRandomRow][someRandomCol] = EMPTY;
     		}
+    		else if(below == FIRE || above == FIRE || left == FIRE || right == FIRE)
+    		{
+    			grid[someRandomRow + 1][someRandomCol] = value;
+	    		grid[someRandomRow][someRandomCol] = OXYGEN;
+    		}
     }
     if(spot == GRASS)
     {
@@ -235,6 +240,22 @@ public class SandLab
 	    		grid[someRandomRow + 1][someRandomCol] = value;
 	    		grid[someRandomRow][someRandomCol] = EMPTY;
 		}
+    		else if( below == GRASS)
+    		{
+    			grid[someRandomRow + 1][someRandomCol] = value;
+	    		grid[someRandomRow][someRandomCol] = EMPTY;
+    		}
+    		else if( below == FIRE)
+    		{
+    			grid[someRandomRow + 1][someRandomCol] = value;
+	    		grid[someRandomRow][someRandomCol] = EMPTY;
+    		}
+    		else if(below == WATER || above == WATER || left == WATER || right == WATER)
+    		{
+    			grid[someRandomRow + 1][someRandomCol] = value;
+	    		grid[someRandomRow][someRandomCol] = OXYGEN;
+    		}
+    		
     }
     if(spot == OXYGEN)
     {
