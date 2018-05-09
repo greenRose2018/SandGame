@@ -144,7 +144,7 @@ public class SandLab
 		right = grid[someRandomRow][someRandomCol +1];
 	}
     
-	if(someRandomRow -1 < 0)
+	if(someRandomRow - 1 < 0)
 	{
 		above = grid[someRandomRow][someRandomCol];
 	}
@@ -236,16 +236,11 @@ public class SandLab
     {
     		value = spot;
     		if(below == EMPTY)
-		{
+    		{
 	    		grid[someRandomRow + 1][someRandomCol] = value;
 	    		grid[someRandomRow][someRandomCol] = EMPTY;
-		}
+			}
     		else if( below == GRASS)
-    		{
-    			grid[someRandomRow + 1][someRandomCol] = value;
-	    		grid[someRandomRow][someRandomCol] = EMPTY;
-    		}
-    		else if( below == FIRE)
     		{
     			grid[someRandomRow + 1][someRandomCol] = value;
 	    		grid[someRandomRow][someRandomCol] = EMPTY;
@@ -265,6 +260,11 @@ public class SandLab
 	    		grid[someRandomRow - 1][someRandomCol] = value;
 	    		grid[someRandomRow][someRandomCol] = EMPTY;
 		}
+    		if(above == FIRE || below == FIRE || left == FIRE || right == FIRE)
+    		{
+    			grid[someRandomRow - 1][someRandomCol] = value;
+	    		grid[someRandomRow][someRandomCol] = EMPTY;
+    		}
     }
   }
   
