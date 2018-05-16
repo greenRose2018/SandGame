@@ -14,6 +14,8 @@ public class SandLab
   public static final int FIRE = 5;
   public static final int DIRT = 6;
   public static final int OXYGEN = 7;
+  public static final int GLASS = 8;
+  public static final int ASHES =9;
   
   
   //do not add any more fields below
@@ -31,7 +33,7 @@ public class SandLab
     String[] names;
     // Change this value to add more buttons
     //Step 4,6
-    names = new String[8];
+    names = new String[10];
     // Each value needs a name for the button
     names[EMPTY] = "Empty";
     names[METAL] = "Metal";
@@ -41,6 +43,8 @@ public class SandLab
     names[FIRE] = "Fire";
     names[DIRT] = "Dirt";
     names[OXYGEN] = "Oxygen";
+    names[GLASS] = "Glass";
+    names[ASHES] = "Ashes";
     
     //1. Add code to initialize the data member grid with same dimensions
     grid = new int[numRows][numCols];
@@ -92,7 +96,6 @@ public class SandLab
 			  else if(grid[r][c] == FIRE)
 			  {
 				  drawingColor = Color.RED;
-				 
 			  }
 			  else if(grid[r][c] == DIRT)
 			  {
@@ -115,7 +118,6 @@ public class SandLab
   {
     //Remember, you need to access both row and column to specify a spot in the array
     //The scalar refers to how big the value could be
-	//int scalar = 100;
     int someRandomRow = (int) (Math.random() * (grid.length -1));
     int someRandomCol = (int) (Math.random() * (grid[0].length -1));
     
