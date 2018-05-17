@@ -15,7 +15,6 @@ public class SandLab
   public static final int DIRT = 6;
   public static final int OXYGEN = 7;
   public static final int GLASS = 8;
-  public static final int ASHES =9;
   
   
   //do not add any more fields below
@@ -33,7 +32,7 @@ public class SandLab
     String[] names;
     // Change this value to add more buttons
     //Step 4,6
-    names = new String[10];
+    names = new String[9];
     // Each value needs a name for the button
     names[EMPTY] = "Empty";
     names[METAL] = "Metal";
@@ -44,7 +43,6 @@ public class SandLab
     names[DIRT] = "Dirt";
     names[OXYGEN] = "Oxygen";
     names[GLASS] = "Glass";
-    names[ASHES] = "Ashes";
     
     //1. Add code to initialize the data member grid with same dimensions
     grid = new int[numRows][numCols];
@@ -105,7 +103,11 @@ public class SandLab
 			  {
 				  drawingColor = Color.lightGray;
 			  }
-			  
+			  else if(grid[r][c] == GLASS)
+			  {
+				drawingColor = Color.CYAN;
+			  }
+	
 			  display.setColor(r,c,drawingColor);
 		  }
 	  }
@@ -179,6 +181,11 @@ public class SandLab
     			grid[someRandomRow + 1][someRandomCol] = value;
 	    		grid[someRandomRow][someRandomCol] = EMPTY;
     		}
+    		else if(below == FIRE || above == FIRE || left == FIRE || right == FIRE)
+    		{
+    			grid[someRandomRow + 1][someRandomCol] = value;
+	    		grid[someRandomRow][someRandomCol] = GLASS;
+    		}
     }
     if(spot == WATER)
     {
@@ -247,26 +254,54 @@ public class SandLab
     			grid[someRandomRow + 1][someRandomCol] = value;
 	    		grid[someRandomRow][someRandomCol] = EMPTY;
     		}
-    		else if(below == WATER || above == WATER || left == WATER || right == WATER)
+    		else if(below == FIRE)
     		{
     			grid[someRandomRow + 1][someRandomCol] = value;
-	    		grid[someRandomRow][someRandomCol] = OXYGEN;
+	    		grid[someRandomRow][someRandomCol] = EMPTY;
     		}
+    		else if(below == SAND)
+    		{
+    			grid[someRandomRow + 1][someRandomCol] = value;
+	    		grid[someRandomRow][someRandomCol] = GLASS;
+    		}
+    		else if(below == OXYGEN || above == OXYGEN || left == OXYGEN || right == OXYGEN)
+    		{
+    			grid[someRandomRow + 1][someRandomCol] = value;
+	    		grid[someRandomRow][someRandomCol] = EMPTY;
+    		}
+//    		else if(below == WATER || above == WATER || left == WATER || right == WATER)
+//    		{
+//    			grid[someRandomRow + 1][someRandomCol] = value;
+//	    		grid[someRandomRow][someRandomCol] = OXYGEN;
+//    		}
     		
     }
     if(spot == OXYGEN)
     {
     		value = spot;
-    		if(above == EMPTY)
+    		if(above == EMPTY )
 		{
-	    		grid[someRandomRow - 1][someRandomCol] = value;
+    				grid[someRandomRow - 1][someRandomCol] = value;
+    				grid[someRandomRow][someRandomCol] = EMPTY;
+		}
+    }
+    if(spot == GLASS)
+    {
+    		value = spot;
+    		if(below == EMPTY)
+		{
+	    		grid[someRandomRow + 1][someRandomCol] = value;
 	    		grid[someRandomRow][someRandomCol] = EMPTY;
 		}
-    		if(above == FIRE || below == FIRE || left == FIRE || right == FIRE)
-    		{
-    			grid[someRandomRow - 1][someRandomCol] = value;
+    }
+    if(spot == DIRT)
+    {
+    		value = spot;
+    		if(below == EMPTY)
+		{
+	    		grid[someRandomRow + 1][someRandomCol] = value;
 	    		grid[someRandomRow][someRandomCol] = EMPTY;
-    		}
+		}
     }
   }
   
